@@ -35,7 +35,7 @@ export default function Footer() {
                 <span className="text-3xl">🌻</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">مهدکودک رُما</span>
+                <span className="text-lg font-bold text-white">مهدکودک روما</span>
                 <span className="text-xs text-amber-400">Roma Kindergarten</span>
               </div>
             </div>

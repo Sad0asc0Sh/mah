@@ -141,7 +141,7 @@ export default function DashboardPage() {
                 <span className="text-2xl">🌻</span>
               </div>
               <div>
-                <h1 className="font-bold text-white">مهدکودک رُما</h1>
+                <h1 className="font-bold text-white">مهدکودک روما</h1>
                 <p className="text-xs text-slate-400\">پنل {profile?.role === "admin" ? "مدیریت" : "والدین"}</p>
               </div>
             </div>

@@ -19,6 +19,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/use-toast";
 import {
@@ -31,8 +44,10 @@ import {
   Calendar,
   User,
   Loader2,
+  Check,
+  ChevronsUpDown,
 } from "lucide-react";
-import { formatJalaliDate } from "@/lib/jalali-date";
+import { formatJalaliDate, isoToJalali, jalaliToIso } from "@/lib/jalali-date";
 
 interface Child {
   id: string;
@@ -61,18 +76,20 @@ export default function ChildrenManager() {
   const [isReportDialogOpen, setIsReportDialogOpen] = useState(false);
   const [selectedChild, setSelectedChild] = useState<Child | null>(null);
   const [saving, setSaving] = useState(false);
+  const [isParentSelectorOpen, setIsParentSelectorOpen] = useState(false);
 
   // Form states
   const [childForm, setChildForm] = useState({
     name: "",
     birth_date: "",
+    birth_date_jalali: "",
     class_name: "",
     parent_id: "",
     notes: "",
   });
 
   const [reportForm, setReportForm] = useState({
-    date: new Date().toISOString().split("T")[0],
+    date: isoToJalali(new Date().toISOString().split("T")[0]) || "",
     mood: "",
     food_intake: "",
     sleep_quality: "",
@@ -106,25 +123,27 @@ export default function ChildrenManager() {
     }
   };
 
+  // نسخه اصلاح‌شده برای جدول profiles بدون ستون ایمیل
   const fetchParents = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("id, full_name")
-        .eq("role", "parent");
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("id, full_name")
+      .eq("role", "parent");
 
-      if (error) throw error;
+    if (error) {
+      console.error("Error fetching parents:", error);
+      return;
+    }
 
-      // Get emails from auth.users via a different approach
-      const parentsWithEmail: Parent[] = (data || []).map((p) => ({
+    if (data) {
+      const formattedParents: Parent[] = data.map((p: any) => ({
         id: p.id,
         full_name: p.full_name,
-        email: "", // Will be filled when parent is selected
+        // چون ایمیل نداریم، نام را جایگزین می‌کنیم تا در لیست نمایش داده شود
+        email: p.full_name ?? "",
       }));
 
-      setParents(parentsWithEmail);
-    } catch (error) {
-      console.error("Error fetching parents:", error);
+      setParents(formattedParents);
     }
   };
 
@@ -138,11 +157,25 @@ export default function ChildrenManager() {
       return;
     }
 
+    const isoBirthDate = childForm.birth_date_jalali
+      ? jalaliToIso(childForm.birth_date_jalali)
+      : childForm.birth_date || null;
+
+    if (childForm.birth_date_jalali && !isoBirthDate) {
+      toast({
+        title: "OrOúO",
+        description:
+          "O¦U^U,O_ O®O\"O¦ O3OO1O¦ OYOU+ OU+O¦OrOO O¦U^U,O_ O¦U^U3UOO_ OYOU+.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setSaving(true);
     try {
       const { error } = await supabase.from("children").insert({
         name: childForm.name,
-        birth_date: childForm.birth_date || null,
+        birth_date: isoBirthDate,
         class_name: childForm.class_name || null,
         parent_id: childForm.parent_id,
         notes: childForm.notes || null,
@@ -159,6 +192,7 @@ export default function ChildrenManager() {
       setChildForm({
         name: "",
         birth_date: "",
+        birth_date_jalali: "",
         class_name: "",
         parent_id: "",
         notes: "",
@@ -203,6 +237,16 @@ export default function ChildrenManager() {
   const handleAddReport = async () => {
     if (!selectedChild) return;
 
+    const isoDate = jalaliToIso(reportForm.date);
+    if (!isoDate) {
+      toast({
+        title: "خطا",
+        description: "تاریخ را به‌صورت ۱۴۰۳/۰۹/۲۰ وارد کنید.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setSaving(true);
     try {
       const {
@@ -211,7 +255,7 @@ export default function ChildrenManager() {
 
       const { error } = await supabase.from("daily_reports").insert({
         child_id: selectedChild.id,
-        date: reportForm.date,
+        date: isoDate,
         mood: reportForm.mood || null,
         food_intake: reportForm.food_intake || null,
         sleep_quality: reportForm.sleep_quality || null,
@@ -230,7 +274,7 @@ export default function ChildrenManager() {
       setIsReportDialogOpen(false);
       setSelectedChild(null);
       setReportForm({
-        date: new Date().toISOString().split("T")[0],
+        date: isoToJalali(new Date().toISOString().split("T")[0]) || "",
         mood: "",
         food_intake: "",
         sleep_quality: "",
@@ -313,10 +357,15 @@ export default function ChildrenManager() {
               <div className="space-y-2">
                 <Label>تاریخ تولد</Label>
                 <Input
-                  type="date"
-                  value={childForm.birth_date}
+                  type="text"
+                  dir="ltr"
+                  placeholder="مثال: ۱۴۰۰/۰۱/۰۱"
+                  value={childForm.birth_date_jalali}
                   onChange={(e) =>
-                    setChildForm({ ...childForm, birth_date: e.target.value })
+                    setChildForm({
+                      ...childForm,
+                      birth_date_jalali: e.target.value,
+                    })
                   }
                 />
               </div>
@@ -490,7 +539,10 @@ export default function ChildrenManager() {
             <div className="space-y-2">
               <Label>تاریخ</Label>
               <Input
-                type="date"
+                type="text"
+                dir="ltr"
+                inputMode="numeric"
+                placeholder="١٤٠٣/٠٩/٢٠"
                 value={reportForm.date}
                 onChange={(e) =>
                   setReportForm({ ...reportForm, date: e.target.value })

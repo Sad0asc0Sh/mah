@@ -46,7 +46,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-xl text-slate-300 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              در مهدکودک رُما، هر روز یک ماجراجویی جدید است. ما با عشق و تخصص، 
+              در مهدکودک روما، هر روز یک ماجراجویی جدید است. ما با عشق و تخصص، 
               آینده‌سازان فردا را پرورش می‌دهیم.
             </p>
 

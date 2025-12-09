@@ -23,7 +23,7 @@ export default function Header() {
               <span className="text-3xl">🌻</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-slate-800">مهدکودک رُما</span>
+              <span className="text-xl font-bold text-slate-800">مهدکودک روما</span>
               <span className="text-xs text-amber-600">Roma Kindergarten</span>
             </div>
           </Link>
