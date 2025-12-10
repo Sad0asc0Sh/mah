@@ -4,38 +4,44 @@ import { Card, CardContent } from "@/components/ui/card";
 const features = [
   {
     icon: Utensils,
-    title: "تغذیه ارگانیک",
-    description: "غذای سالم و ارگانیک با منوی متنوع هفتگی تحت نظر متخصص تغذیه",
+    title: "برنامه تغذیه سالم و میان‌وعده مقوی",
+    description:
+      "صرف میان‌وعده‌های سالم و متنوع زیر نظر مربیان، با رعایت بهداشت و اصول تغذیه کودک، تا انرژی لازم برای بازی و یادگیری را داشته باشند.",
     color: "bg-amber-100 text-amber-600",
   },
   {
     icon: Languages,
-    title: "مربیان دوزبانه",
-    description: "آموزش همزمان فارسی و انگلیسی با مربیان مجرب و دوزبانه",
+    title: "آموزش زبان انگلیسی به‌صورت جذاب",
+    description:
+      "آشنایی با واژگان و مکالمه‌های ساده انگلیسی از طریق بازی، آهنگ، شعر و فلش‌کارت برای ایجاد علاقه طبیعی به زبان دوم.",
     color: "bg-sky-100 text-sky-600",
   },
   {
     icon: Camera,
-    title: "دوربین مداربسته",
-    description: "نظارت ۲۴ ساعته با امکان مشاهده آنلاین برای والدین",
+    title: "گزارش تصویری از فعالیت‌های روزانه",
+    description:
+      "ثبت لحظات شیرین حضور کودکان در کلاس‌ها و کارگاه‌ها و اشتراک‌گذاری منظم در گالری و شبکه‌های ارتباطی با والدین.",
     color: "bg-green-100 text-green-600",
   },
   {
     icon: Heart,
-    title: "مراقبت با عشق",
-    description: "محیطی گرم و صمیمی با توجه ویژه به هر کودک",
+    title: "محیطی شاد، امن و سرشار از محبت",
+    description:
+      "تمرکز بر عزت‌نفس، احترام متقابل و ایجاد احساس تعلق؛ هر کودک در روما دیده می‌شود و مهم است.",
     color: "bg-rose-100 text-rose-600",
   },
   {
     icon: Shield,
-    title: "محیط امن",
-    description: "استانداردهای بالای ایمنی و بهداشت در تمام فضاها",
+    title: "ایمنی و نظارت دقیق",
+    description:
+      "فضای استاندارد، کنترل ورود و خروج، نظارت مداوم مربیان و رعایت اصول ایمنی برای آرامش خاطر والدین.",
     color: "bg-indigo-100 text-indigo-600",
   },
   {
     icon: Clock,
-    title: "ساعات انعطاف‌پذیر",
-    description: "برنامه‌ریزی متناسب با نیاز خانواده‌ها از ۷:۳۰ تا ۱۸:۰۰",
+    title: "ساعت کاری مناسب والدین شاغل",
+    description:
+      "پذیرش از ساعت ۶:۳۰ تا ۱۵:۳۰ با برنامه‌های هدفمند، تا فرزندتان در تمام این زمان در محیطی امن و آموزشی باشد.",
     color: "bg-purple-100 text-purple-600",
   },
 ];
@@ -47,13 +53,14 @@ export default function FeaturesSection() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-block px-4 py-1 rounded-full bg-sky-100 text-sky-600 text-sm font-medium mb-4">
-            ویژگی‌های ما
+            ویژگی‌های متمایز کودکستان روما
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            چرا والدین <span className="text-sky-600">ما را انتخاب</span> می‌کنند؟
+            آنچه روما را از سایر مهدکودک‌ها متفاوت می‌کند
           </h2>
           <p className="text-gray-600">
-            ما به بهترین‌ها برای فرزندان شما متعهد هستیم
+            ترکیب محیطی امن و شاد، کادر مجرب و برنامه‌های استاندارد، روما را به
+            انتخابی مطمئن برای سال‌های طلایی کودکی تبدیل کرده است.
           </p>
         </div>
 
@@ -70,7 +77,9 @@ export default function FeaturesSection() {
                 >
                   <feature.icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{feature.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-600">{feature.description}</p>
               </CardContent>
             </Card>

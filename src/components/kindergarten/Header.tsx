@@ -5,26 +5,34 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "خانه", href: "/kindergarten" },
-  { label: "برنامه‌ها", href: "/kindergarten/programs" },
-  { label: "گالری", href: "/kindergarten/gallery" },
-  { label: "تماس", href: "/kindergarten/contact" },
+  { label: "دوره‌ها و کلاس‌ها", href: "/kindergarten#programs" },
+  { label: "گالری تصاویر", href: "/kindergarten#gallery" },
+  { label: "اخبار و اطلاعیه‌ها", href: "/kindergarten#news" },
+  { label: "تماس با ما", href: "/kindergarten#contact" },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-lg">
+    <header
+      className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-lg"
+      dir="rtl"
+    >
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/kindergarten" className="flex items-center gap-3">
             <div className="relative h-14 w-14 rounded-2xl bg-slate-900 flex items-center justify-center shadow-lg">
-              <span className="text-3xl">🌻</span>
+              <span className="text-3xl text-amber-400">dYO¯</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-slate-800">مهدکودک روما</span>
-              <span className="text-xs text-amber-600">Roma Kindergarten</span>
+              <span className="text-xl font-bold text-slate-800">
+                کودکستان روما
+              </span>
+              <span className="text-xs text-amber-600">
+                Roma Kindergarten | Mashhad
+              </span>
             </div>
           </Link>
 
@@ -45,12 +53,12 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
             <Link to="/kindergarten/login">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold shadow-lg shadow-amber-200/50 transition-all hover:scale-105"
               >
                 <User className="h-5 w-5" />
-                ورود والدین
+                ورود اولیا
               </Button>
             </Link>
           </div>
@@ -60,7 +68,11 @@ export default function Header() {
             className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="h-6 w-6 text-slate-700" /> : <Menu className="h-6 w-6 text-slate-700" />}
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6 text-slate-700" />
+            ) : (
+              <Menu className="h-6 w-6 text-slate-700" />
+            )}
           </button>
         </div>
       </div>
@@ -83,10 +95,13 @@ export default function Header() {
               ))}
             </ul>
             <div className="mt-4 pt-4 border-t border-slate-200">
-              <Link to="/kindergarten/login" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                to="/kindergarten/login"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <Button className="w-full gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold">
                   <User className="h-5 w-5" />
-                  ورود والدین
+                  ورود اولیا
                 </Button>
               </Link>
             </div>

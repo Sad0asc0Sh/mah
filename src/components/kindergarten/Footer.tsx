@@ -1,25 +1,26 @@
 import { Link } from "react-router-dom";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Instagram, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Instagram,
   MessageCircle,
-  Heart 
+  Heart,
 } from "lucide-react";
 
 const quickLinks = [
-  { label: "خانه", href: "/kindergarten" },
-  { label: "ورود والدین", href: "/kindergarten/login" },
-  { label: "گالری", href: "/kindergarten/gallery" },
-  { label: "تماس با ما", href: "/kindergarten/contact" },
+  { label: "صفحه اصلی", href: "/kindergarten" },
+  { label: "ورود اولیا", href: "/kindergarten/login" },
+  { label: "گالری تصاویر", href: "/kindergarten#gallery" },
+  { label: "اخبار و اطلاعیه‌ها", href: "/kindergarten#news" },
+  { label: "تماس با ما", href: "/kindergarten#contact" },
 ];
 
 const programs = [
-  { label: "پیش‌دبستانی", href: "/kindergarten/programs/preschool" },
-  { label: "خلاقیت و هنر", href: "/kindergarten/programs/creativity" },
-  { label: "ورزش و بازی", href: "/kindergarten/programs/sports" },
+  { label: "پیش‌یک و پیش‌دو", href: "/kindergarten/programs/preschool" },
+  { label: "کلاس‌های آی‌مث", href: "/kindergarten/programs/imath" },
+  { label: "رباتیک و علوم کودک", href: "/kindergarten/programs/robotics" },
   { label: "زبان انگلیسی", href: "/kindergarten/programs/english" },
 ];
 
@@ -32,16 +33,20 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="relative h-14 w-14 rounded-2xl bg-amber-400 flex items-center justify-center shadow-lg">
-                <span className="text-3xl">🌻</span>
+                <span className="text-3xl">dYO¯</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">مهدکودک روما</span>
-                <span className="text-xs text-amber-400">Roma Kindergarten</span>
+                <span className="text-lg font-bold text-white">کودکستان روما</span>
+                <span className="text-xs text-amber-400">
+                  Roma Kindergarten - Mashhad
+                </span>
               </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
-              ما با عشق و تعهد، محیطی امن و شاد برای رشد و یادگیری کودکان شما فراهم می‌کنیم. 
-              هر کودک برای ما یک ستاره است.
+              کودکستان روما با بهره‌گیری از کادری مجرب و برنامه‌های آموزشی
+              استاندارد، محیطی امن، شاد و انگیزشی برای کودکان ۳ تا ۷ سال فراهم
+              کرده است. در روما، یادگیری واقعی در قالب بازی، کارگاه‌های خلاق،
+              فعالیت‌های گروهی و مهارت‌های زندگی شکل می‌گیرد.
             </p>
             <div className="flex gap-3">
               <a
@@ -63,7 +68,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">دسترسی سریع</h3>
+            <h3 className="text-lg font-bold text-white">لینک‌های سریع</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -80,7 +85,9 @@ export default function Footer() {
 
           {/* Programs */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">برنامه‌های آموزشی</h3>
+            <h3 className="text-lg font-bold text-white">
+              برنامه‌ها و دوره‌های آموزشی
+            </h3>
             <ul className="space-y-2">
               {programs.map((program) => (
                 <li key={program.label}>
@@ -96,16 +103,18 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">اطلاعات تماس</h3>
+          <div className="space-y-4" id="contact">
+            <h3 className="text-lg font-bold text-white">راه‌های ارتباطی</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <MapPin className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span>تهران، خیابان ولیعصر، کوچه گل‌ها، پلاک ۱۲</span>
+                <span>
+                  مشهد، بلوار صیاد شیرازی، صیاد شیرازی ۸، صارمی ۴۹، سرو ۱۱
+                </span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Phone className="h-5 w-5 text-amber-400 flex-shrink-0" />
-                <span dir="ltr">۰۲۱-۱۲۳۴۵۶۷۸</span>
+                <span>۰۹۱۵۵۱۰۹۲۶۹ | ۰۵۱۳۸۹۲۴۵۲۴</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Mail className="h-5 w-5 text-amber-400 flex-shrink-0" />
@@ -113,7 +122,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
                 <Clock className="h-5 w-5 text-amber-400 flex-shrink-0" />
-                <span>شنبه تا چهارشنبه: ۷:۳۰ - ۱۸:۰۰</span>
+                <span>ساعت کاری: ۶:۳۰ تا ۱۵:۳۰ (شنبه تا پنجشنبه)</span>
               </li>
             </ul>
           </div>
@@ -123,11 +132,10 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-slate-800">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
             <p className="flex items-center gap-1">
-              ساخته شده با <Heart className="h-4 w-4 text-red-500 fill-red-500" /> در تهران
+              ساخته‌شده با عشق برای کودکان روما
+              <Heart className="h-4 w-4 text-red-500 fill-red-500" />
             </p>
-            <p>
-              © ۱۴۰۳ مهدکودک رُما. تمامی حقوق محفوظ است.
-            </p>
+            <p>تمامی حقوق کودکستان روما محفوظ است.</p>
           </div>
         </div>
       </div>

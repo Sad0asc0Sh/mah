@@ -20,7 +20,7 @@ interface HomeNewsSectionProps {
 export default function HomeNewsSection({ news, loading }: HomeNewsSectionProps) {
   if (loading) {
     return (
-      <section className="py-16 lg:py-24 bg-slate-50">
+      <section id="news" className="py-16 lg:py-24 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
@@ -54,7 +54,7 @@ export default function HomeNewsSection({ news, loading }: HomeNewsSectionProps)
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-slate-50">
+    <section id="news" className="py-16 lg:py-24 bg-slate-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">

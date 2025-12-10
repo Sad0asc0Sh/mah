@@ -16,16 +16,18 @@ export default function CTASection() {
         <div className="max-w-3xl mx-auto text-center text-white space-y-6">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-400/20 border border-amber-400/30 text-amber-400 text-sm font-medium backdrop-blur-sm">
             <Sparkles className="w-4 h-4" />
-            <span>ثبت‌نام محدود!</span>
+            <span>آمادگی امروز، آینده‌ای روشن برای فرزندتان</span>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-            آینده‌ای درخشان برای فرزند شما شروع می‌شود
+            شروع مسیر پیش‌یک و پیش‌دو در کودکستان روما
           </h2>
 
           <p className="text-lg text-slate-300 max-w-xl mx-auto">
-            همین امروز برای مشاوره رایگان و بازدید از مهدکودک با ما تماس بگیرید. 
-            جای خالی محدود است!
+            در روما، کودکان ۳ تا ۷ سال در محیطی امن، شاد و استاندارد، مهارت‌های
+            تحصیلی، اجتماعی و زندگی را در قالب بازی، پروژه‌های خلاق و کلاس‌های
+            تخصصی می‌آموزند. اگر برای سال تحصیلی جدید برنامه‌ریزی می‌کنید، اکنون
+            بهترین زمان برای پیش‌ثبت‌نام است.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -35,7 +37,7 @@ export default function CTASection() {
                 className="bg-amber-400 hover:bg-amber-500 text-slate-900 text-lg px-10 py-6 gap-2 font-bold shadow-lg shadow-amber-400/30 transition-all hover:scale-105"
               >
                 <Calendar className="w-5 h-5" />
-                پیش‌ثبت‌نام
+                درخواست پیش‌ثبت‌نام
               </Button>
             </Link>
             <Button
@@ -44,23 +46,23 @@ export default function CTASection() {
               className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 text-lg px-10 py-6 gap-2 backdrop-blur-sm"
             >
               <Phone className="w-5 h-5" />
-              تماس: ۰۲۱-۱۲۳۴۵۶۷۸
+              تماس: ۰۹۱۵۵۱۰۹۲۶۹ / ۰۵۱۳۸۹۲۴۵۲۴
             </Button>
           </div>
 
           {/* Trust badges */}
           <div className="flex flex-wrap items-center justify-center gap-8 pt-8 text-slate-300 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">✅</span>
-              <span>مشاوره رایگان</span>
+              <span className="text-2xl">۳–۷</span>
+              <span>پذیرش کودکان ۳ تا ۷ سال (مختلط)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🎁</span>
-              <span>تخفیف ویژه ثبت‌نام زودهنگام</span>
+              <span className="text-2xl">۲</span>
+              <span>دوره‌های پیش‌یک و پیش‌دو با رویکرد استاندارد</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🚌</span>
-              <span>سرویس رایگان</span>
+              <span className="text-2xl">۸+</span>
+              <span>کلاس‌های مهارتی و آموزشی تخصصی</span>
             </div>
           </div>
         </div>
